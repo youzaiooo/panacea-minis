@@ -30,8 +30,10 @@ Initialize an empty Wiki safely with:
 sh scripts/init.sh   # defaults to /var/minis/memory/panacea-wiki
 ```
 
-The script only creates missing directories and templates. It never overwrites
-existing records or calculates a diet prescription.
+The script only creates missing directories and templates (including `SCHEMA.md`,
+`index.md`, and `log.md`). It never overwrites existing records or calculates a
+diet prescription. Before any Wiki work, orient with `SCHEMA.md` (structure and
+conventions), `index.md`, and the newest `log.md` entries.
 
 ## Dietary Profile and Meal Workflow
 

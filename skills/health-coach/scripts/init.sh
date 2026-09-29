@@ -44,6 +44,16 @@ copy_if_missing() {
 
 copy_if_missing "$skill_dir/config/profile.template.md" "$wiki_path/profile.md"
 copy_if_missing "$skill_dir/config/nutrition-goals.template.md" "$wiki_path/nutrition-goals.md"
+copy_if_missing "$skill_dir/config/schema.template.md" "$wiki_path/SCHEMA.md"
+copy_if_missing "$skill_dir/config/index.template.md" "$wiki_path/index.md"
 copy_if_missing "$skill_dir/templates/dietary-profile.md" "$wiki_path/dietary-profile.md"
+
+if [ ! -e "$wiki_path/log.md" ]; then
+  cp "$skill_dir/config/log.template.md" "$wiki_path/log.md"
+  printf '\n## [%s] create | Wiki initialized\n- Initialized by health-coach/scripts/init.sh\n' "$(date '+%Y-%m-%d %H:%M')" >> "$wiki_path/log.md"
+  echo "Created $wiki_path/log.md"
+else
+  echo "Keeping existing $wiki_path/log.md"
+fi
 
 echo "Health Wiki is ready at $wiki_path"

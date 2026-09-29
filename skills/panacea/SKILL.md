@@ -38,7 +38,7 @@ description: >
 ## 默认工作流
 
 1. 在相关时澄清：目标、诊断、医生指示、用药、过敏、偏好与约束。
-2. 定向读档：先看健康 Wiki 的 `profile.md`、`index.md`、最近 `log.md` 和相关记录，再回答/分析。
+2. 定向读档：先看健康 Wiki 的 `SCHEMA.md`、`profile.md`、`index.md`、最近 `log.md` 和相关记录，再回答/分析。
 3. 餐食或饮食上报 → 默认作为**记录事件**处理（见「餐食记录与评估」节与 `health-coach` 技能）。除非用户说不要记，或只是假设性提问。
 4. 实质性医学/营养/药物/化验/安全主张 → 按证据优先流程检索后再答。
 5. 给实用答案：结论先行，附不确定性、来源依据、合适的下一步。
@@ -50,6 +50,7 @@ description: >
 
 结构约定：
 
+- `SCHEMA.md`：档案结构公约与维护规则——任何 Wiki 操作前先读
 - `profile.md`：用户基础信息、健康目标、诊断、过敏、医生指示
 - `dietary-profile.md`：饮食记录偏好与已确认的长期模式
 - `nutrition-goals.md`：用户或医生给定的营养目标（**绝不擅自填写**）
@@ -57,7 +58,7 @@ description: >
 - `records/measurements/`、`records/labs/`、`records/symptoms/`、`records/medications/`
 - `raw/reports/`、`raw/images/`、`raw/sources/`：原件与证据原文
 - `concepts/`：可复用的知识与产品库（`concepts/foods/`）
-- `index.md` 与 `log.md`：目录索引与变更日志
+- `index.md` 与 `log.md`：目录索引与变更日志（`log.md` 倒序，新条目在最上）
 
 治理规则：
 

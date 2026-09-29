@@ -52,6 +52,8 @@ Panacea 的身份、边界、行为逻辑除了技能，还存在一个 **SOUL.m
 
 （或手动执行 `sh /var/minis/skills/health-coach/scripts/init.sh`）
 
+初始化会生成 `SCHEMA.md`（档案公约）、`index.md`（索引）、`log.md`（日志）、`profile.md`、`nutrition-goals.md`、`dietary-profile.md` 及 `records/`、`raw/`、`concepts/` 目录骨架——之后 Panacea 对 wiki 的所有维护都按这套结构进行。
+
 然后说「带我填一下健康档案」，跟着问题录入基本信息。之后就可以正常使用了：
 发饮食照片、体重、化验单、症状或任何健康问题，Panacea 会记录、查证并归档到本地。
 
@@ -136,7 +138,8 @@ skills/
    ```
 
    预期输出 `Health Wiki is ready at /var/minis/memory/panacea-wiki`，并在该目录下生成
-   `profile.md`、`nutrition-goals.md`、`dietary-profile.md` 以及 `records/`、`raw/`、`concepts/` 子目录。
+   `SCHEMA.md`、`index.md`、`log.md`、`profile.md`、`nutrition-goals.md`、`dietary-profile.md`
+   以及 `records/`、`raw/`、`concepts/` 子目录。
 
 5. 验证技能可被读取：随机打开一个技能文件（如 `/var/minis/skills/panacea/SKILL.md`），
    确认开头有 `name:` 与 `description:` 的 frontmatter。
