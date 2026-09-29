@@ -1,6 +1,6 @@
 # Panacea for Minis 🩺
 
-把**hermes上的 **Panacea —— 个人健康助手** 移植到 [Minis](https://github.com/OpenMinis/OpenMinis)（iOS 上的本地优先 AI Agent）的可分发包：**16 个技能 + 1 个灵魂文件（SOUL.md）**。
+把hermes上的 **Panacea —— 个人健康助手** 移植到 [Minis](https://github.com/OpenMinis/OpenMinis)（iOS 上的本地优先 AI Agent）的可分发包：**16 个技能 + 1 个灵魂文件（SOUL.md）**。
 
 每位家人可以在自己的 iPhone / iPad 上拥有一个健康 AI：数据 100% 存在本机、彼此独立、不连任何服务器。
 **本仓库不含任何个人数据** —— 所有人的档案从空白开始，只属于使用者本人。
