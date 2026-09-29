@@ -1,6 +1,6 @@
 # Panacea for Minis 🩺
 
-把 **Panacea —— 个人健康助手** 移植到 [Minis](https://github.com/OpenMinis/OpenMinis)（iOS 上的本地优先 AI Agent）的可分发技能包。
+把 **Panacea —— 个人健康助手** 移植到 [Minis](https://github.com/OpenMinis/OpenMinis)（iOS 上的本地优先 AI Agent）的可分发包：**16 个技能 + 1 个灵魂文件（SOUL.md）**。
 
 每位家人可以在自己的 iPhone / iPad 上拥有一个健康 AI：数据 100% 存在本机、彼此独立、不连任何服务器。
 **本仓库不含任何个人数据** —— 所有人的档案从空白开始，只属于使用者本人。
@@ -13,7 +13,7 @@
 - **医疗健康问答**：术语、化验单、用药、血脂、减重、补剂——循证优先、引用真实来源、不做诊断
 - **安全边界**：红旗症状立刻建议就医；只用现代循证医学
 
-## 安装（3 步）
+## 安装（4 步）
 
 ### 第 1 步：准备 Minis
 
@@ -32,7 +32,17 @@ App Store 安装 Minis，并在设置里配置你的模型 API Key（本包不�
 
 装好后，`/var/minis/skills/` 下会有 16 个技能目录。如果 agent 需要手动安装，见文末「给 Minis Agent 的安装细则」。
 
-### 第 3 步：初始化健康档案
+### 第 3 步：注入灵魂（推荐）
+
+Panacea 的身份、边界、行为逻辑除了技能，还存在一个 **SOUL.md**（灵魂文件）—— 这是 Minis 的原生机制：SOUL.md 会作为人格层注入**每一轮对话**，让 Panacea 始终保有自己的角色、语气和医学边界。
+
+在 Minis 对话里发送：
+
+> 帮我应用 Panacea 的灵魂文件：把 https://raw.githubusercontent.com/youzaiooo/panacea-minis/main/soul/SOUL.md 写入 /var/minis/memory/SOUL.md。注意：如果我现有的 SOUL.md 已有自定义内容，先停下来问我，不要直接覆盖。
+
+应用后可以在 Minis 的 Settings → Soul 里看到（名字显示为 **Panacea**）。
+
+### 第 4 步：初始化健康档案
 
 在对话里说：
 
@@ -47,6 +57,8 @@ App Store 安装 Minis，并在设置里配置你的模型 API Key（本包不�
 
 ```
 install.sh          # Minis 内一键安装脚本（下载 tarball → 复制到 /var/minis/skills/）
+soul/
+  SOUL.md           # 灵魂文件：身份/边界/证据规则/工作流 → 写入 /var/minis/memory/SOUL.md
 skills/
   panacea/                             # 主技能：身份、边界、证据优先、总工作流
   health-coach/                        # 餐食/体重/补剂记录流程、init.sh、模板
@@ -76,6 +88,7 @@ skills/
 ## 说明
 
 - 本包不含模型 API Key（在 Minis 里自配）。
+- SOUL.md 为可选增强：约 1,200 tokens（Minis 上限 2,000）；不装也不影响技能功能，跳过第 3 步即可。
 - 只提供健康教育信息与记录辅助，**不构成医疗建议**；用药与治疗请咨询医生/药师。
 
 ---
@@ -102,7 +115,19 @@ skills/
 
    预期看到：`panacea health-coach health-wiki-record-maintenance ... wiki-write-verification`（共 16 个）。
 
-3. 初始化空白健康档案：
+3. 应用灵魂文件（推荐）：
+
+   - 下载并检查：现有 `/var/minis/memory/SOUL.md` 不存在 / 为空 / 仅为默认内容（如 `name: "Minis"` 且正文为空）→ 可直接写入；**已有用户自定义内容 → 停下询问用户**，不要覆盖。
+   - 写入（优先直接写文件）：
+
+     ```sh
+     wget -q -O /tmp/panacea-soul.md https://raw.githubusercontent.com/youzaiooo/panacea-minis/main/soul/SOUL.md
+     cp /tmp/panacea-soul.md /var/minis/memory/SOUL.md
+     ```
+
+   - 若 shell 写入受限，改用 `minis-config` 工具（需用户批准）设置 `soul.name` / `soul.style` / `soul.lang` / `soul.body`；body 上限 2000 tokens，本文件约 1200。
+
+4. 初始化空白健康档案：
 
    ```sh
    sh /var/minis/skills/health-coach/scripts/init.sh
@@ -111,7 +136,7 @@ skills/
    预期输出 `Health Wiki is ready at /var/minis/memory/panacea-wiki`，并在该目录下生成
    `profile.md`、`nutrition-goals.md`、`dietary-profile.md` 以及 `records/`、`raw/`、`concepts/` 子目录。
 
-4. 验证技能可被读取：随机打开一个技能文件（如 `/var/minis/skills/panacea/SKILL.md`），
+5. 验证技能可被读取：随机打开一个技能文件（如 `/var/minis/skills/panacea/SKILL.md`），
    确认开头有 `name:` 与 `description:` 的 frontmatter。
 
-5. 告知用户：安装完成，可以对你说「初始化我的健康 wiki」「带我填一下健康档案」开始使用。
+6. 告知用户：安装完成，可以对你说「初始化我的健康 wiki」「带我填一下健康档案」开始使用。
