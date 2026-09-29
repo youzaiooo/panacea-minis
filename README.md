@@ -2,7 +2,8 @@
 
 把hermes上的 **Panacea —— 个人健康助手** 移植到 [Minis](https://github.com/OpenMinis/OpenMinis)（iOS 上的本地优先 AI Agent）的可分发包：**16 个技能 + 1 个灵魂文件（SOUL.md）**。
 
-每位家人可以在自己的 iPhone / iPad 上拥有一个健康 AI：数据 100% 存在本机、彼此独立、不连任何服务器。
+每位家人可以在自己的 iPhone / iPad / Android /或任意可以安装agent框架的设备上拥有一个健康 AI：数据 100% 存在本机、彼此独立、不连任何服务器。
+本仓库使用Minis作为实例
 **本仓库不含任何个人数据** —— 所有人的档案从空白开始，只属于使用者本人。
 
 ## 能力
@@ -27,6 +28,7 @@ App Store 安装 Minis，并在设置里配置你的模型 API Key（本包不�
 > `wget -qO- https://raw.githubusercontent.com/youzaiooo/panacea-minis/main/install.sh | sh`
 > 如果 wget 报错就用 curl —— `curl -fsSL https://raw.githubusercontent.com/youzaiooo/panacea-minis/main/install.sh | sh`；
 > 如果提示证书问题，先执行 `apk add ca-certificates`。
+> 如果提示网络问题，则使用镜像加速站点，https://cdn.jsdelivr.net/gh/youzaiooo/panacea-minis@main/install.sh
 
 也可以只把仓库地址发过去：「读一下 https://github.com/youzaiooo/panacea-minis ，按 README 安装」。
 
